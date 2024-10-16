@@ -14,7 +14,10 @@ def home():
     agent = request.user_agent
     return f"This is your homepage :) - {agent} "
 
-@app.route("/hi/<string:name>/<int:age>")
-def greetings(name, age):
+@app.route("/hi/<string:name>")
+def greetings(name):
     name = name.upper()
-    return f"Welcome, {name} - {age}"
+    age = request.args.get("age", 0, int)
+    year = 2024 - age
+    
+    return f"Welcome, {name} - {year}"
