@@ -3,11 +3,11 @@ from flask import Flask, request, redirect, url_for, render_template, abort
 app = Flask(__name__)
 app.config.from_pyfile("config.py")
 
-@app.route('/')
+@app.route("/")
 def main():
     return render_template("base.html")
 
-@app.route('/homepage') 
+@app.route("/homepage") 
 def home():
     """View for the Home page of your website."""
     agent = request.user_agent
@@ -32,17 +32,21 @@ posts = [
     {"id": 3, 'title': 'Flask and Jinja2', 'content': 'Jinja2 is powerful for templating.', 'author': 'Mike Lee'}
 ] 
 
-@app.route('/posts') 
+@app.route("/posts") 
 def get_posts():
     return render_template("posts.html", posts = posts)
 
-@app.route('/post/<int:id>') 
+@app.route("/post/<int:id>") 
 def detail_post(id):
     if id > 3:
         abort(404)
     post = posts[id-1]
     return render_template("detail_post.html", post=post)
 
+@app.route("/resume")
+def resume():
+    return render_template("resume.html")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run(debug=True)
