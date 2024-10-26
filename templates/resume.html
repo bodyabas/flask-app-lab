@@ -13,12 +13,12 @@
 </header>
 <main>
     <h1>Про себе</h1>
-    <article id="about">
+    <section id="about">
         <div><img id="image" src="{{ url_for("static", filename="images/image.jpg")}}" alt="image"></div>
         <p>Мене звати Богдан Басюрин, мені 19 років. Я проживаю у м. Івано-Франківськ. Навчаюся у Прикарпатському національний університеті імені Василя Стефаника. Захоплююся спортом та вивченням чогось нового. Також люблю переглядати фільми та серіали.</з>
-    </article>
+    </section>
     <h1>Навички</h1>
-    <article id="skills">
+    <section id="skills">
         <div id="skills-logos">
             <div><img src="{{url_for("static", filename="images/html5-logo.png")}}" alt=""></div>
             <div><img src="{{url_for("static", filename="images/css3-logo.png")}}" alt=""></div>
@@ -27,24 +27,24 @@
             <div><img src="{{url_for("static", filename="images/github-logo.png")}}" alt=""></div>
             <div><img src="{{url_for("static", filename="images/englishb2-logo.png")}}" alt=""></div>
         </div>
-    </article>
+    </section>
     <h1>Освіта</h1>
-    <article id="education">
+    <section id="education">
         <div><img class="educational-institutions" src="{{url_for("static", filename="images/lyceum20.jpg")}}" alt=""><p>Я закінчив Ліцей №20 та маю повну середню освіту. У цьому навчальному закладі я навчався протягом 11 років. З 2011 по 2022</p></div>
         <div><img class="educational-institutions" src="{{url_for("static", filename="images/pnu.jpg")}}" alt=""><p>Зараз я навчаюся у Прикарпатському університеті імені Василя Стефаника на факультеті математики та інформатики та спеціальності 121 інженерія програмного забезпечення. У цьому вищому навчальному закладі я вже навчаюся протягом 3 років.</p></div>
-    </article>
+    </section>
     <h1>Проєкти</h1>
-    <article id="projects">
+    <section id="projects">
         <p>
             Перший проєкт який я розробив - це гра, де моделюється процес розповсюдження інфекційного захворювання. 
             У цій грі є певна місцевість розміром NхN клітин, яка задається із користувачем. 
             Перша заражена клітина також задається користувачем і у неї є шанс 50% заразити клітини зверху, зліва, знизу, справа та клітини по діагоналі з шансом 25%. 
             Також є час захворювання, який триває протягом 5 одиниць часу та час імунітету, який триває протягом 4 одиниць часу. 
-            <br> Для написання такої гри було використано C++ </p>
+            <br> Для написання такої гри було використано: C++ </p>
         <p>
             Ще один проєкт, який був розроблений - це звичайний ToDoList (щоденник завдань, які потрібно зробити, були зроблені або в процесі виконання). 
-            <br> Для написання такої програми було використано: HTML5, CSS3, JavaScript</p>
-    </article>
+            <br> Для написання такої програми було використано: HTML5, CSS3, JavaScript </p>
+    </section>
 </main>
 {% include 'footer.html' %}
 {% endblock %}
