@@ -1,0 +1,42 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    color: #000000;
+}
+
+h1{
+    text-align: center;
+    padding: 25px;
+}
+
+#resume-navigation{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 100px;
+}
+#image{
+    height: 300px;
+    width: 300px;
+    border-radius: 200px;
+}
+#about{
+    display: flex;
+    width: 50%;
+    margin: 0% 150px;
+}
+
+#about > p{
+    margin-left: 15px;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+
+#skills-logos{
+    display: flex;
+    justify-content: space-between;
+}

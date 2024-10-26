@@ -1,3 +1,31 @@
 {% extends 'base.html' %}
 
 {% block title %} Resume {% endblock %}
+
+{% block content %}
+<header>
+    <nav id="resume-navigation">
+        <p><a href="#about">Про себе</a></p>
+        <p><a href="#skills">Навички</a></p>
+        <p><a href="#education">Освіта</a></p>
+    </nav>
+    <main>
+        <h1>Про себе</h1>
+        <article id="about">
+            <div><img id="image" src="{{ url_for("static", filename="images/image.jpg")}}" alt="image"></div>
+            <p>Мене звати Богдан Басюрин, мені 19 років. Я проживаю у м. Івано-Франківськ. Навчаюся у Прикарпатському національний університеті імені Василя Стефаника. Захоплююся спортом та вивченням чогось нового.</з>
+        </article>
+        <h1>Навички</h1>
+        <article id="skills">
+        <div id="skills-logos">
+            <div><img src="{{url_for("static", filename="images/html5-logo.png")}}" alt=""></div>
+            <div><img src="{{url_for("static", filename="images/css3-logo.png")}}" alt=""></div>
+            <div><img src="{{url_for("static", filename="images/javascript-logo.png")}}" alt=""></div>
+            <div><img src="{{url_for("static", filename="images/python-logo.png")}}" alt=""></div>
+            <div><img src="{{url_for("static", filename="images/github-logo.png")}}" alt=""></div>
+            <div><img src="{{url_for("static", filename="images/englishb2-logo.png")}}" alt=""></div>
+        </div>
+        </article>
+    </main>
+</header>
+{% endblock %}
