@@ -1,17 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hello :)</h1>
-    <h1>User: {{ name | title }}</h1>
+{% extends 'base.html' %}
+
+{% block title%} Greeting page {% endblock %}
+
+{% block content %}
+<h1 id="user-flask">Flask Application</h1>
+    <nav id="user-navigation">
+        <ul>
+            <li><a href="{{ url_for("users.greetings", name="John", age="30") }}">Greet John</a></li>
+            <li><a href="{{ url_for("users.admin")}}">Admin</a></li>
+        </ul>
+    </nav>
+    <h2 id="user-greeting">Hello, {{ name }}</h2>
     {% if age %}
-        <h1>Age: {{ age }}</h1>
+        <p class="user-age">You are {{ age }} years old.</p>
     {% else %}
-        <h2>Age: empty</h2>
+        <p class="user-age">Age is unknown.</p>
     {% endif %}
-</body>
-</html>
+{% endblock %}
