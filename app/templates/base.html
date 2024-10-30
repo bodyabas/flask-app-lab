@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="{{ url_for("static", filename="css/styles.css") }}">
 </head>
 <body>
+
+    {% with msg = get_flashed_messages(with_categories=True) %} 
+    {% if msg %} 
+    {% for category, message in msg %} 
+    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert"> 
+    <strong>{{ message }}</strong> 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> 
+    </div> 
+    {% endfor %} 
+    {% endif %} 
+    {% endwith %}
+
     {% block content %}
     Base page
     {% endblock %}
