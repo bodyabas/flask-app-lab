@@ -7,8 +7,9 @@ def get_profile():
     if "username" in session: 
         username_value = session["username"]
         cookies = request.cookies
+        color_theme = request.cookies.get('color_theme') 
 
-        return render_template("profile.html", username=username_value, cookies = cookies) 
+        return render_template("profile.html", username=username_value, cookies = cookies, color_theme=color_theme) 
     
     flash("Ви вийшли з сесії.", "danger") 
     return redirect(url_for("users.login"))
@@ -91,4 +92,12 @@ def delete_all_cookies():
         response.set_cookie(cookie_key, '', expires=0)
     flash("Усі кукі успішно видалені!", "success")
 
+    return response
+
+@user_bp.route('/profile/set_color_theme/<string:color>') 
+def set_color_theme(color): 
+    if color not in ['light', 'dark']: 
+        color = 'light' 
+    response = make_response(redirect(url_for('users.get_profile'))) 
+    response.set_cookie('color_theme', color) 
     return response
