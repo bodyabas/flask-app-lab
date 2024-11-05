@@ -4,27 +4,32 @@ from datetime import timedelta, datetime
 
 @user_bp.route("/profile") 
 def get_profile(): 
-    if "username" in session: 
-        username_value = session["username"] 
-        return render_template("profile.html", username=username_value) 
-    flash("Invalid: Session.", "danger") 
+    if "username" and "password" in session: 
+        username_value = session["username"]
+        password_value = session["password"]
+        return render_template("profile.html", username=username_value, password=password_value ) 
+    flash("Ви вийшли з сесії.", "danger") 
     return redirect(url_for("users.login"))
 
 @user_bp.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
         username = request.form["login"]
-        session["username"] = username
-        flash("Success: Info added successfully.", "success")
-        return redirect(url_for("users.get_profile"))
-    # session["age"] = 30
+        password = request.form["password"]
+        if username == "bodya" and password == "1234":
+            session["username"] = username
+            session["password"] = password
+            flash("Ви успішно авторизувалися.", "success")
+            return redirect(url_for("users.get_profile"))
+        else:
+            flash("Неправильний логін або пароль", "danger")
     return render_template("login.html")
 
 @user_bp.route('/logout')
 def logout():
     # Видалення користувача із сесії
     session.pop('username', None)
-    session.pop('age', None)
+    session.pop('password', None)
     return redirect(url_for('users.get_profile'))
 
 @user_bp.route("/<string:name>")
