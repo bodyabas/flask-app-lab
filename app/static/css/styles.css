@@ -257,3 +257,25 @@ footer p {
     color: #fff;
 }
 
+/* css for profile.hmtl and cookie table */
+
+#cookie-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#cookie-table th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 15px;
+    font-weight: bold;
+}
+
+#cookie-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}

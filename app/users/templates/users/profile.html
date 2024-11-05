@@ -3,8 +3,44 @@
 {% block title%} Profile {% endblock %}
 
 {% block content %}
-
 <h1>Ласкаво просимо до вашого профілю {{ username }}!</h1>
 <p>Інформація профілю...</p>
+<h2>Додати куку</h2>
+<form action="{{ url_for("users.set_cookie") }}" method="post">
+    <label for="key">Ключ:</label>
+    <input type="text" name="key" required>
+    <label for="value">Значення:</label>
+    <input type="text" name="value" required>
+    <label for="duration">Термін дії (секунди):</label>
+    <input type="number" name="duration" required>
+    <button class="btn btn-success" type="submit">Додати куку</button>
+</form>
+<h2>Видалити куку</h2>
+<form action="{{ url_for("users.delete_cookie") }}" method="post">
+    <label for="key">Ключ:</label>
+    <input type="text" name="key">
+    <button class="btn btn-warning" type="submit">Видалити куку</button>
+</form>
+<h2>Видалити всі кукі</h2>
+<form action="{{ url_for("users.delete_all_cookies") }}" method="post">
+    <button class="btn btn-danger" type="submit">Видалити всі кукі</button>
+</form>
+<h2>Поточні кукі</h2>
+<table id="cookie-table">
+    <thead>
+        <tr>
+            <th>Ключ</th>
+            <th>Значення</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for key, value in cookies.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 <a href="{{ url_for("users.logout") }}">Вийти</a>
 {% endblock %}

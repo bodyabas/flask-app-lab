@@ -4,10 +4,12 @@ from datetime import timedelta, datetime
 
 @user_bp.route("/profile") 
 def get_profile(): 
-    if "username" and "password" in session: 
+    if "username" in session: 
         username_value = session["username"]
-        password_value = session["password"]
-        return render_template("profile.html", username=username_value, password=password_value ) 
+        cookies = request.cookies
+
+        return render_template("profile.html", username=username_value, cookies = cookies) 
+    
     flash("Ви вийшли з сесії.", "danger") 
     return redirect(url_for("users.login"))
 
@@ -16,6 +18,7 @@ def login():
     if request.method == "POST":
         username = request.form["login"]
         password = request.form["password"]
+
         if username == "bodya" and password == "1234":
             session["username"] = username
             session["password"] = password
@@ -23,11 +26,12 @@ def login():
             return redirect(url_for("users.get_profile"))
         else:
             flash("Неправильний логін або пароль", "danger")
+
     return render_template("login.html")
 
 @user_bp.route('/logout')
 def logout():
-    # Видалення користувача із сесії
+
     session.pop('username', None)
     session.pop('password', None)
     return redirect(url_for('users.get_profile'))
@@ -45,12 +49,20 @@ def admin():
     print(to_url)
     return redirect(to_url)
 
-@user_bp.route('/set_cookie')
+@user_bp.route('/set_cookie', methods=["POST"])
 def set_cookie():
-    response = make_response('Кука встановлена')
-    # response.set_cookie('username', 'student', expires=datetime.now()+timedelta(seconds=10))
-    response.set_cookie('username', 'student', max_age=timedelta(seconds=60))
-    response.set_cookie('color', '', max_age=timedelta(seconds=60))
+
+    key = request.form.get("key")
+    value = request.form.get("value")
+    duration = int(request.form.get("duration", 0))
+
+    response = make_response(redirect(url_for("users.get_profile")))
+    if key and value:
+        response.set_cookie(key, value, max_age=timedelta(seconds=duration))
+        flash(f"Кука '{key}' успішно додана!", "success")
+    else:
+        flash("Заповніть усі поля для додавання куки.", "danger")
+
     return response
 
 @user_bp.route('/get_cookie')
@@ -58,8 +70,25 @@ def get_cookie():
     username = request.cookies.get('username')
     return f'Користувач: {username}'
 
-@user_bp.route('/delete_cookie')
+@user_bp.route('/delete_cookie', methods=["POST"])
 def delete_cookie():
-    response = make_response('Кука видалена')
-    response.set_cookie('username', '', expires=0) # response.set_cookie('username', '', max_age=0)
+
+    key = request.form.get("key")
+    response = make_response(redirect(url_for("users.get_profile")))
+
+    if key:
+        response.set_cookie(key, '', expires=0)
+        flash(f"Кука '{key}' успішно видалена!", "success")
+
+    return response
+
+@user_bp.route('/delete_all_cookies', methods=["POST"])
+def delete_all_cookies():
+
+    response = make_response(redirect(url_for("users.get_profile")))
+
+    for cookie_key in request.cookies.keys():
+        response.set_cookie(cookie_key, '', expires=0)
+    flash("Усі кукі успішно видалені!", "success")
+
     return response
