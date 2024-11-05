@@ -22,7 +22,7 @@ h1 {
     color: #004d40;
 }
 
-#resume-navigation {
+#navigation {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -31,7 +31,7 @@ h1 {
     border-radius: 5px;
 }
 
-#resume-navigation p {
+#navigation p {
     margin: 0;
     font-size: 1.2em;
 }
@@ -143,12 +143,12 @@ footer p {
         padding: 15px;
     }
 
-    #resume-navigation {
+    #navigation {
         margin-bottom: 20px;
     }
 
-    #resume-navigation p {
-        font-size: medium;
+    #navigation p {
+        font-size: small;
     }
 
     #about > div {
