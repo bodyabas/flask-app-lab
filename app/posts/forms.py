@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, BooleanField, DateField, SelectField, SubmitField
 from wtforms.validators import DataRequired, Length
 
-CATEGORIES =[("tech", "Tech", ), ("science", "Science"), ("lifestyle", "Lifestyle")]
+CATEGORIES =[("tech", "Tech"), ("science", "Science"), ("lifestyle", "Lifestyle")]
 
 class PostForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired(), Length(max=100)])
@@ -12,4 +12,5 @@ class PostForm(FlaskForm):
                               format="%Y-%m-%d", validators=[DataRequired()])
     category = SelectField("Category", 
                            choices=CATEGORIES, validators=[DataRequired()])
+    author = StringField("Author", validators=[DataRequired()])
     submit = SubmitField("Add Post")

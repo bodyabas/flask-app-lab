@@ -180,6 +180,11 @@ footer p {
         width: 90%;
         margin: 10px auto;
     }
+
+    /* styles for views_posts.html */
+    .card-container{
+        justify-content: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -292,3 +297,36 @@ input#is_active{
     appearance: auto;
     width: min-content;
 }
+
+/* cards for posts */
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.card p {
+    line-height: 1.6;
+    text-align: justify;
+    color: #555555;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+

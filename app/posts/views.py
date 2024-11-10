@@ -42,7 +42,8 @@ def add_post():
             "content": form.content.data,
             "is_active": form.is_active.data,
             "publish_date": str(form.publish_date.data),
-            "category": form.category.data
+            "category": form.category.data,
+            "author": form.author.data
         }
 
         data.append(post_data)
@@ -50,7 +51,18 @@ def add_post():
         with open("posts.json", "w") as file:
             json.dump(data, file, indent=4)
 
-        print(post_data)
+        # print(data)
         flash(f'Post {post_data["title"]} added successfully!', 'success')
-        return redirect(url_for('.add_post'))
+        return redirect(url_for('.view_posts'))
     return render_template('add_post.html', form=form)
+
+@post_bp.route("/view_posts")
+def view_posts():
+
+    if os.path.exists("posts.json"):
+        with open("posts.json", "r") as file:
+            posts = json.load(file)
+    else:
+        posts = []
+
+    return render_template("view_posts.html", posts=posts)

@@ -3,7 +3,7 @@
 {% block title %} Add POST {% endblock %}
 
 {% block content %}
-
+    <h1>Add Post</h1>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         {% from 'form_macros.html' import render_field %}
@@ -13,6 +13,7 @@
         {{ render_field(form.is_active) }}
         {{ render_field(form.publish_date) }}
         {{ render_field(form.category) }}
+        {{ render_field(form.author) }}
 
         {{ form.submit(class="btn btn-primary") }}
     </form>
