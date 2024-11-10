@@ -1,6 +1,7 @@
 from . import post_bp
 from flask import render_template, abort, redirect, url_for, flash
 from .forms import PostForm
+import json, os
 
 posts = [
     {"id": 1, 'title': 'My First Post', 'content': 'This is the content of my first post.', 'author': 'John Doe'},
@@ -23,9 +24,33 @@ def detail_post(id):
 def add_post():
     form = PostForm()
     if form.validate_on_submit():
-        title = form.title.data
-        content = form.content.data
-        print(title, content)
-        flash(f'Post {title} added successfully!', 'success')
+
+        if os.path.exists("posts.json"):
+            with open("posts.json", 'r') as file:
+                data = json.load(file)
+            if data:
+                last_id = data[-1]["id"]
+            else:
+                last_id = 0
+        else:
+            data = []
+            last_id = 0
+
+        post_data = {
+            "id": last_id + 1,
+            "title": form.title.data,
+            "content": form.content.data,
+            "is_active": form.is_active.data,
+            "publish_date": str(form.publish_date.data),
+            "category": form.category.data
+        }
+
+        data.append(post_data)
+
+        with open("posts.json", "w") as file:
+            json.dump(data, file, indent=4)
+
+        print(post_data)
+        flash(f'Post {post_data["title"]} added successfully!', 'success')
         return redirect(url_for('.add_post'))
     return render_template('add_post.html', form=form)
