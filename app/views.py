@@ -14,3 +14,8 @@ def home():
 @app.route("/resume")
 def resume():
     return render_template("resume.html")
+
+@app.errorhandler(404)
+def page_not_found(error):
+    # Відображаємо шаблон 404.html і повертаємо статусний код 404
+    return render_template('404.html'), 404
