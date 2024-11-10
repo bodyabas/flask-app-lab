@@ -286,3 +286,9 @@ footer p {
 .dark{
     background-color: #071a1d;
 }
+
+/* fixed is active input */
+input#is_active{
+    appearance: auto;
+    width: min-content;
+}
