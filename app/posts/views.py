@@ -1,5 +1,5 @@
 from . import post_bp
-from flask import render_template, abort, redirect, url_for, flash
+from flask import render_template, abort, redirect, url_for, flash, session
 from .forms import PostForm
 import json, os
 
@@ -36,6 +36,8 @@ def add_post():
             data = []
             last_id = 0
 
+        author = session.get("username", "Anonym")
+
         post_data = {
             "id": last_id + 1,
             "title": form.title.data,
@@ -43,7 +45,7 @@ def add_post():
             "is_active": form.is_active.data,
             "publish_date": str(form.publish_date.data),
             "category": form.category.data,
-            "author": form.author.data
+            "author": author
         }
 
         data.append(post_data)

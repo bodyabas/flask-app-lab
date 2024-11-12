@@ -12,5 +12,4 @@ class PostForm(FlaskForm):
                               format="%Y-%m-%d", validators=[DataRequired()])
     category = SelectField("Category", 
                            choices=CATEGORIES, validators=[DataRequired()])
-    author = StringField("Author", validators=[DataRequired()])
     submit = SubmitField("Add Post")

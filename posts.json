@@ -1,20 +1,20 @@
 [
     {
         "id": 1,
-        "title": "Hello",
-        "content": "1234",
+        "title": "Title",
+        "content": "Content",
         "is_active": true,
-        "publish_date": "2024-11-09",
+        "publish_date": "2024-11-12",
         "category": "tech",
-        "author": "John"
+        "author": "bodya"
     },
     {
         "id": 2,
-        "title": "Title",
-        "content": "Content",
+        "title": "Title2",
+        "content": "Content2",
         "is_active": false,
         "publish_date": "2024-11-12",
-        "category": "tech",
-        "author": "Bob"
+        "category": "lifestyle",
+        "author": "Anonym"
     }
 ]
