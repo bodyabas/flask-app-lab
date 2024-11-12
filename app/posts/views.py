@@ -36,8 +36,6 @@ def add_post():
             data = []
             last_id = 0
 
-        author = session.get("username", "Anonym")
-
         post_data = {
             "id": last_id + 1,
             "title": form.title.data,
@@ -45,7 +43,7 @@ def add_post():
             "is_active": form.is_active.data,
             "publish_date": str(form.publish_date.data),
             "category": form.category.data,
-            "author": author
+            "author": session.get("username", "Anonym")
         }
 
         data.append(post_data)
