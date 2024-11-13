@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
 
-{% block title %} POSTS {% endblock %}
+{% block title %}Detail Post{% endblock %}
 
 {% block content %}
-    <h1>Post № {{post["id"]}} - {{post["title"]}} </h1>
+    <article class="post-article container mt-5">
+        <header class="post-header">
+            <h1 class="post-title">{{ post["title"] }}</h1>
+            <div class="post-meta">
+                <span>Post № {{ post["id"] }}</span> |
+                <span><strong>Category:</strong> {{ post.get("category") }}</span> |
+                <span><strong>Publish Date:</strong> {{ post.get("publish_date") }}</span> |
+                <span><strong>Author:</strong> {{ post.get("author") }}</span>
+            </div>
+            <p class="post-status {{ 'active' if post.get('is_active') else 'inactive' }}">
+                {{ "Active" if post.get("is_active") else "Inactive" }}
+            </p>
+        </header>
+        
+        <hr>
 
-    <p>{{ post.get('content') }}</p>
-    
-    <a href="{{ url_for("posts.get_posts") }}">Return posts</a>
+        <section class="post-content mt-4">
+            <p>{{ post.get("content") }}</p>
+        </section>
+        <a href="{{ url_for('posts.get_posts') }}" class="btn btn-outline-success">Return to Posts</a>
+    </article>
 {% endblock %}

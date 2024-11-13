@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "title": "title",
+        "content": "lorem",
+        "is_active": true,
+        "publish_date": "2024-11-13",
+        "category": "tech",
+        "author": "Anonymous"
+    },
+    {
+        "id": 2,
+        "title": "Title2",
+        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam itaque animi quia nisi minima praesentium quas doloremque sequi, sed, dolor fuga facilis modi sit, fugit nostrum harum? Necessitatibus, maxime beatae.",
+        "is_active": true,
+        "publish_date": "2024-11-13",
+        "category": "science",
+        "author": "bodya"
+    },
+    {
+        "id": 3,
+        "title": "Title3",
+        "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit doloribus sapiente corporis rem qui libero doloremque labore est dignissimos quos?",
+        "is_active": false,
+        "publish_date": "2024-11-09",
+        "category": "lifestyle",
+        "author": "bodya"
+    }
+]

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% from 'form_macros.html' import render_field %}
 
 {% block title %} Add POST {% endblock %}
 
@@ -6,7 +7,6 @@
     <h1>Add Post</h1>
     <form action="" method="post" novalidate>
             {{ form.hidden_tag() }}
-            {% from 'form_macros.html' import render_field %}
             
             {{ render_field(form.title) }}
             {{ render_field(form.content) }}
@@ -14,7 +14,8 @@
             {{ render_field(form.publish_date) }}
             {{ render_field(form.category) }}
             
-            {{ form.submit(class="btn btn-primary") }}
+            {{ form.submit(class="btn btn-success") }}
     </form>
-    <a href="{{ url_for("posts.get_posts") }}">Return posts</a>
+    <a href="{{ url_for("posts.get_posts") }}">Return to Posts</a>
+    
 {% endblock %}
