@@ -25,5 +25,14 @@
         "publish_date": "2024-11-09",
         "category": "lifestyle",
         "author": "bodya"
+    },
+    {
+        "id": 4,
+        "title": "Title5",
+        "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt enim placeat accusamus reprehenderit suscipit veritatis quis, necessitatibus labore, ipsum eius illo debitis deleniti nam ullam officiis fugit! Eos enim facilis aspernatur, aliquid dignissimos, quae optio laborum ipsa maiores id sunt quasi asperiores eius amet atque sequi assumenda officia eveniet magni!",
+        "is_active": true,
+        "publish_date": "2024-11-14",
+        "category": "lifestyle",
+        "author": "bodya"
     }
 ]

@@ -2,6 +2,10 @@
 
 {% block title %}Detail Post{% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for(".static", filename="css/posts.css") }}">
+{% endblock %}
+
 {% block content %}
     <article class="post-article container mt-5">
         <header class="post-header">
@@ -16,7 +20,6 @@
                 {{ "Active" if post.get("is_active") else "Inactive" }}
             </p>
         </header>
-        
         <hr>
 
         <section class="post-content mt-4">

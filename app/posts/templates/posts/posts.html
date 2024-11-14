@@ -2,13 +2,21 @@
 
 {% block title %}POSTS{% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for(".static", filename="css/posts.css") }}">
+{% endblock %}
+
 {% block content %}
-    <h1>Posts</h1>
+    <h1 class="posts-article">Posts</h1>
+        <form action="{{ url_for(".add_post") }}" class="mb-4">
+            <button type="submit" class="btn btn-success">Add post</button>
+        </form>
     <div id="posts">
         {% if posts %}
             <div class="card-container">
                 {% for post in posts %}
                     <div class="card">
+                        <img src="{{ url_for(".static", filename="img/post_image.png") }}" alt="">
                         <h2>{{ post.get("title") }}</h2>
                         <p>Post №:{{ post.get("id") }}</p>
                         <p>{{ post.get("content") | truncate(23) }}</p>
